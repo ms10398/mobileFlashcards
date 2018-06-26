@@ -2,6 +2,10 @@ import { AsyncStorage } from 'react-native'
 
 const STORAGE_KEY = 'secretsuperstar'
 
+/**
+ * Get all decks from storage
+ * @returns {Object}
+ */
 export function fetchDecks() {
     return AsyncStorage.getItem(STORAGE_KEY)
         .then(result => {
@@ -9,12 +13,22 @@ export function fetchDecks() {
         })
 }
 
+/**
+ * Add a new deck
+ * @param key
+ * @param deck
+ * @returns {*}
+ */
 export function addDeck(key, deck) {
     return AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
         [key]: deck
     }))
 }
 
+/**
+ * Remove a deck
+ * @param key
+ */
 export function removeDeck(key) {
     return fetchDecks().then(results => {
         results[key] = undefined
@@ -23,6 +37,12 @@ export function removeDeck(key) {
     })
 }
 
+/**
+ * Add card to a deck
+ * @param key
+ * @param card
+ * @returns {Object}
+ */
 export function addCard(key, card) {
     return fetchDecks().then(results => {
         deck = results[key]

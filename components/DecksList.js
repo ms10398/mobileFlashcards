@@ -9,9 +9,14 @@ import {AppLoading} from 'expo';
 import { initData } from '../utils/helpers'
 
 export class DecksList extends Component {
+
     state = {
       ready: false,
-    };
+    }
+
+    /**
+    * Logic when component mounts
+    */
     componentDidMount() {
         API.fetchDecks().then(decks => {
             this.props.fetchDecks(decks)
@@ -43,6 +48,11 @@ export class DecksList extends Component {
 
 }
 
+/**
+ * Map state to props
+ * @param state
+ * @returns {{decks: *}}
+ */
 const mapStateToProps = (state) => {
   console.log(state);
   const decks = Object.keys(state).length === 0? initData():state
