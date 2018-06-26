@@ -6,6 +6,10 @@
     "description": "My First app",
     "slug": "flashcards",
     "version": "1.0",
+    "icon": "https://i.imgur.com/XROmtMx.png",
+    "notification": {
+      "icon": "https://i.imgur.com/XROmtMx.png"
+    },
     "ios": {
       "bundleIdentifier": "org.flashcards.exp"
     },
